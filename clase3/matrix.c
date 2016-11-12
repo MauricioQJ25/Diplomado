@@ -17,14 +17,14 @@ MPI_Init(&arc, &argv);
    }
 
    if (id==0){
-      llenadatos(datos);
+      //llenadatos(datos);
       for (i = 0; i <5 ; i++){
       MPI_Send(&datos[i*2][0],10,MPI_INT,i+1,i+1,MPI_COMM_WORLD);
       }
       for(i=0;i<5;i++){
          MPI_Recv(&datos[i*2][0],10,MPI_INT,i+1,i+1,MPI_COMM_WORLD,&estado);
       }
-      Imprimir(datos);
+      //Imprimir(datos);
    }
    else{
       MPI_Recv(datos,10,MPI_INT,0,id,MPI_COMM_WORLD,&estado);
@@ -39,6 +39,7 @@ return 0;
 
 }//fin de main
 
+/*
 void llenardatos(int *datos){
 
 int i,j;
@@ -54,3 +55,4 @@ for (i=0;i<5;i++)
    printf("El valor del dato[%d][%d] es %d",i,j,datos[i][j]);
 
 }
+*/
